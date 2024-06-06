@@ -1,21 +1,28 @@
+import React, { useState, useCallback } from 'react';
 import './App.css';
 
-function App() {
+import Playlist from "../Playlist/Playlist";
+import SearchBar from "../SearchBar/SearchBar";
+import SearchResults from "../SearchResults/SearchResults";
+import Spotify from "../../util/Spotify";
+
+
+const App = () => {
+  const [searchResults, setSearchResults] = useState([]);
+
+  const search = useCallback((term) => {
+    Spotify.search(term).then(setSearchResults)
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>   
+      <h1>Jamming</h1>
+      <div className='App'>
+        <SearchBar onSearch={search} />
+
+      </div>
+
     </div>
   );
 }
