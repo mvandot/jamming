@@ -1,6 +1,7 @@
 let accessToken;
 const clientID = "c97ce195ab8c40d69ce032822cb88c83";
-const redirectUrl = "https://jammmingtomusic.netlify.app";
+//const secretID = "e34f22ee07fb4488be8d8e98e8d4859a"
+const redirectUrl = "http://localhost:3000/";
 
 const Spotify = {
     getAccessToken() {
@@ -21,25 +22,23 @@ const Spotify = {
         window.location = redirect;
     },
 
-        search(term) {
+        async search(term) {
         accessToken = Spotify.getAccessToken();
-        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
-            method: "GET",
-            headers: { Authorization: `Bearer ${accessToken}` },
-        })
-            .then((response) => response.json())
-            .then((jsonResponse) => {
-                if (!jsonResponse) {
-                    console.error("Response error")
-                }
-                return jsonResponse.tracks.items.map((t) => ({
-                    id: t.id,
-                    name: t.name,
-                    artist: t.artists[0].name,
-                    album: t.album.name,
-                    uri: t.uri,
-                }));
+        const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+                method: "GET",
+                headers: { Authorization: `Bearer ${accessToken}` },
             });
+            const jsonResponse = await response.json();
+            if (!jsonResponse) {
+                console.error("Response error");
+            }
+            return jsonResponse.tracks.items.map((t) => ({
+                id: t.id,
+                name: t.name,
+                artist: t.artists[0].name,
+                album: t.album.name,
+                uri: t.uri,
+            }));
     },
 
 
@@ -85,4 +84,4 @@ const Spotify = {
 }
 
 
-export { Spotify };
+export default Spotify;
