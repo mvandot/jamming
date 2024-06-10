@@ -16,24 +16,33 @@ const App = () => {
     Spotify.search(term).then(setSearchResults)
   }, []);
 
-  //to complete
-  const addTrack = useCallback((track) => {
+  const addTrack = useCallback(
+    (track) => {
+      if (playlistTracks.some((savedTrack) => savedTrack.id === track.id))
+        return;
 
-  }, [playlistTracks]);
+      setPlaylistTracks((prevTracks) => [...prevTracks, track]);
+    },
+    [playlistTracks]
+  );
 
   const removeTrack = useCallback((track) => {
-    setPlaylistTracks((prevTracks) => prevTracks.filter((currentTrack) => currentTrack.id !== track.id ))
+    setPlaylistTracks((prevTracks) =>
+      prevTracks.filter((currentTrack) => currentTrack.id !== track.id)
+    );
   }, []);
 
   const updatePlaylistName = useCallback((name) => {
-    setPlaylistName(name)
-  });
+    setPlaylistName(name);
+  }, []);
 
-  //to complete
   const savePlaylist = useCallback(() => {
-
+    const trackUris = playlistTracks.map((track) => track.uri);
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+      setPlaylistName("New Playlist");
+      setPlaylistTracks([]);
+    });
   }, [playlistName, playlistTracks]);
-
 
   return (
     <div>
