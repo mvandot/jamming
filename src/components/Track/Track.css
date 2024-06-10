@@ -1,5 +1,6 @@
 .Track {
-
+    display: flex;
+    align-items: center;
 }
 
 .Track-information {
@@ -11,7 +12,7 @@
 }
 
 .Track-information p {
-    
+
 }
 
 .Track-action {

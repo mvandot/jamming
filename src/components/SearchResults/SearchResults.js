@@ -12,4 +12,4 @@ const SearchResults = (props) => {
     );
 };
 
-export default Tracklist;
+export default SearchResults;
