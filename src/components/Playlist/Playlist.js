@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 
 import "./Playlist.css";
 
-import Tracklist from "../Tracklist/Tracklist";
+import TrackList from "../TrackList/TrackList";
 
 const Playlist = (props) => {
   const handleNameChange = useCallback(
@@ -15,7 +15,7 @@ const Playlist = (props) => {
   return (
     <div className="Playlist">
       <input onChange={handleNameChange} defaultValue={"New Playlist"} />
-      <Tracklist
+      <TrackList
         tracks={props.playlistTracks}
         isRemoval={true}
         onRemove={props.onRemove}

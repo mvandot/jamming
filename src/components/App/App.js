@@ -1,11 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import './App.css';
+import React, { useState, useCallback } from "react";
+import "./App.css";
 
 import Playlist from "../Playlist/Playlist";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Spotify from "../../util/Spotify";
-
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -13,7 +12,7 @@ const App = () => {
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const search = useCallback((term) => {
-    Spotify.search(term).then(setSearchResults)
+    Spotify.search(term).then(setSearchResults);
   }, []);
 
   const addTrack = useCallback(
@@ -64,6 +63,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;

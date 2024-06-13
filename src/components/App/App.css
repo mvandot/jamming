@@ -9,30 +9,30 @@ html {
 }
 
 h1 {
-  padding: .7rem 0;
-  background-color: #1e1d1d;
+  padding: .77rem 0;
+  background-color: #010c3f;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.88rem;
   color: #fff;
-  font-size: 1.8rem;
-  font-family: 'Popins' sans-serif;
-  align-items: center;
 }
 
 h1 .highlight {
-  color: #67078f;
+  color: #6c41ec;
 }
 
 h2 {
-  font-family: 'Popins', sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.55rem;
 }
 
 .App {
   height: 100%;
-  padding: 0% 17% 0% 17%;
+  padding: 0 17% 10% 17%;
   background-image: url('./background_photo_desktop.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
+  background-repeat: no-repeat;
   font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   color: #fff;
@@ -41,9 +41,10 @@ h2 {
 .App-playlist {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1020px) {
   .App-playlist {
     align-items: center;
     flex-direction: column;
